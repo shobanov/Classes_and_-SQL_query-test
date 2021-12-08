@@ -2,19 +2,16 @@ abstract class Aclass {
   Numbers: Array<number>;
 
   constructor(n: number) {
-    this.fill(n);
+    const numbers = this.fill(n);
+    this.Numbers = numbers;
   };
 
-  private fill(n: number): void {
-    const arr = []
-    for (let i = 0; i < n; i++ ) {
-      arr.push(Math.round( Math.random() * 10 ));
-    };
-    this.Numbers = arr
+  private fill(length: number): number[] {
+    return Array.from({ length }, () => Math.floor(Math.random() * 10));
   };
 
   factorial(): Array<number> {
-    return this.Numbers.map(item => factorialOfNumber(item));
+    return this.Numbers.map(factorialOfNumber);
 
     function factorialOfNumber(num: number) {
       if (num === 0 || num === 1) {
@@ -30,6 +27,7 @@ abstract class Aclass {
 class Class1 extends Aclass {
   sort(): Array<number> {
     this.Numbers.sort();
+    console.log(this.factorial());
     return this.factorial();
   };
 };
